@@ -1,7 +1,7 @@
 # PS4 5.01 Linux Loader
 A simple payload that let you run Linux on your 5.01 PS4
 
-WORKS! With [XVortex 4.55 SDK](https://github.com/xvortex/ps4-payload-sdk).
+WORKS! With [XVortex SDK](https://github.com/xvortex/ps4-payload-sdk) (When Compatible for 5.01 ).
 Made by [Vultra](https://twitter.com/C0rpVultra)
 
 ## How to build
