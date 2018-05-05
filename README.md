@@ -5,7 +5,7 @@ WORKS! With [XVortex 4.55 SDK](https://github.com/xvortex/ps4-payload-sdk).
 Made by [Vultra](https://twitter.com/C0rpVultra)
 
 ## How to build
-use https://github.com/xvortex/ps4-payload-sdk to compile it. You also need to compile https://github.com/fail0verflow/ps4-kexec and place `kexec.bin` & `kernel.elf` into this folder. Compile kexec with `make CFLAG='-DPS4_5_01 -DKASLR -DNO_SYMTAB'`.
+use https://github.com/xvortex/ps4-payload-sdk to compile it. You also need to compile https://github.com/fail0verflow/ps4-kexec and place `kexec.bin` & `kernel.elf` into this folder. Compile kexec with `make CFLAG='-DPS4_5_01 -DKASLR -DNO_SYMTAB'`. (Note: DPS4_5_01 has not been added to kexec) 
 
 ## How to use
 
