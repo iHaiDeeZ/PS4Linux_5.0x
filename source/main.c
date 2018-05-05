@@ -3,9 +3,9 @@
 #include "ps4.h"
 #include "defines.h"
 
-#define KERN_XFAST_SYSCALL 0x3095D0 //4.55
-#define KERN_PRISON_0		0x10399B0 //4.55
-#define KERN_ROOTVNODE		0x21AFA30 //4.55
+#define KERN_XFAST_SYSCALL 0x3095D0 //4.55 (Updating Soon to 5.01)
+#define KERN_PRISON_0		0x10399B0 //4.55 (Updating Soon to 5.01)
+#define KERN_ROOTVNODE		0x21AFA30 //4.55 (Updating Soon to 5.01)
 
 #define	CTL_KERN	1	/* "high kernel": proc, limits */
 #define	KERN_PROC	14	/* struct: process entries */
@@ -49,9 +49,9 @@ int kpayload(struct thread *td, struct kpayload_args* args){
 	void** got_rootvnode = (void**)&kernel_ptr[KERN_ROOTVNODE];
 	
 	//Resolve kernel functions...
-	int (*copyout)(const void *kaddr, void *uaddr, size_t len) = (void *)(kernel_base + 0x1EA520);
-	int (*printfkernel)(const char *fmt, ...) = (void *)(kernel_base + 0x00435C70);
-	int (*copyin)(const void *uaddr, void *kaddr, size_t len) = (void *)(kernel_base + 0x1EA600);
+	int (*copyout)(const void *kaddr, void *uaddr, size_t len) = (void *)(kernel_base + 0x1EA520); //5.01
+	int (*printfkernel)(const char *fmt, ...) = (void *)(kernel_base + 0x00435C70); //5.01
+	int (*copyin)(const void *uaddr, void *kaddr, size_t len) = (void *)(kernel_base + 0x1EA600); //5.01
 
 	cred->cr_uid = 0;
 	cred->cr_ruid = 0;
@@ -66,12 +66,12 @@ int kpayload(struct thread *td, struct kpayload_args* args){
 	writeCr0(cr0 & ~X86_CR0_WP);
 	
 	//Kexec init
-	void *DT_HASH_SEGMENT = (void *)(kernel_base+ 0xB1D820); // Vultra
+	void *DT_HASH_SEGMENT = (void *)(kernel_base+ 0xB1D820); // Vultra (Updating Soon to 5.01)
 	memcpy(DT_HASH_SEGMENT,kexec, kexec_size);
 
 	void (*kexec_init)(void *, void *) = DT_HASH_SEGMENT;
 
-	kexec_init((void *)(kernel_base+0x00435C70), NULL);
+	kexec_init((void *)(kernel_base+0x00435C70), NULL); //5.01 F-kernel
 
 	// Say hello and put the kernel base in userland to we can use later
 	printfkernel("\nPS4 Linux Loader for 5.01 by Vultra\n");
