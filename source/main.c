@@ -3,7 +3,7 @@
 #include "ps4.h"
 #include "defines.h"
 
-#define KERN_XFAST_SYSCALL 0x1C0 //5.01
+#define KERN_XFAST_SYSCALL 0x1C0 //5.01 https://twitter.com/C0rpVultra/status/992789973966512133
 #define KERN_PRISON_0		0x10986A0 //5.01
 #define KERN_ROOTVNODE		0x22C19F0 //5.01
 
