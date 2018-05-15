@@ -3,9 +3,9 @@
 #include "ps4.h"
 #include "defines.h"
 
-#define KERN_XFAST_SYSCALL 0x3095D0 //4.55 (Updating Soon to 5.01)
-#define KERN_PRISON_0		0x10399B0 //4.55 (Updating Soon to 5.01)
-#define KERN_ROOTVNODE		0x21AFA30 //4.55 (Updating Soon to 5.01)
+#define KERN_XFAST_SYSCALL 0x1C0 //5.01
+#define KERN_PRISON_0		0x10986A0 //5.01
+#define KERN_ROOTVNODE		0x22C19F0 //5.01
 
 #define	CTL_KERN	1	/* "high kernel": proc, limits */
 #define	KERN_PROC	14	/* struct: process entries */
