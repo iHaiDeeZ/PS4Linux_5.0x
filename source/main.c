@@ -6,6 +6,7 @@
 #define KERN_XFAST_SYSCALL 0x1C0 //5.01 https://twitter.com/C0rpVultra/status/992789973966512133
 #define KERN_PRISON_0		0x10986A0 //5.01
 #define KERN_ROOTVNODE		0x22C19F0 //5.01
+#define DT_HASH_SEGMENT		0xB5EE20 //5.01
 
 #define	CTL_KERN	1	/* "high kernel": proc, limits */
 #define	KERN_PROC	14	/* struct: process entries */
@@ -66,7 +67,7 @@ int kpayload(struct thread *td, struct kpayload_args* args){
 	writeCr0(cr0 & ~X86_CR0_WP);
 	
 	//Kexec init
-	void *DT_HASH_SEGMENT = (void *)(kernel_base+ 0xB1D820); // Vultra (Updating Soon to 5.01)
+	void *DT_HASH_SEGMENT = (void *)(kernel_base+ [DT_HASH_SEGMENT]); //5.01
 	memcpy(DT_HASH_SEGMENT,kexec, kexec_size);
 
 	void (*kexec_init)(void *, void *) = DT_HASH_SEGMENT;
